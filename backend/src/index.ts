@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import errorHandler from "./middleware/errorHandler";
 import {OK} from "./constants/http";
 import authRoutes from "./routes/auth.routes";
+import playerRoutes from "./routes/players.routes";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(
 app.use(cookieParser());
 
 //Routes
+app.use("/api/players", playerRoutes);
 app.use("/auth", authRoutes);
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
         res.status(OK).json({
